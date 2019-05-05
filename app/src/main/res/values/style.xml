@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="line_style">
+        <item name="android:color">@color/colore3e3e3</item>
+        <item name="android:background">@color/colore3e3e3</item>
+    </style>
+
+    <!-- 水平线风格-->
+    <style name="HorizontalLineStyle" parent="@style/line_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/ydp1</item>
+    </style>
+
+</resources>

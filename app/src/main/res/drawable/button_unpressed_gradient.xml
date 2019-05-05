@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+  <!-- 填充色 -->
+  <solid android:color="@color/colorfabe00"/>
+  <!-- 描边 设置线宽及颜色 -->
+  <gradient android:startColor="@color/colorfabe00"
+    android:endColor="@color/colorfde000"
+      android:angle="180"/>
+
+  <corners
+      android:topLeftRadius="@dimen/dp6"
+      android:topRightRadius="@dimen/dp6"
+      android:bottomRightRadius="@dimen/dp6"
+      android:bottomLeftRadius="@dimen/dp6"/>
+</shape>

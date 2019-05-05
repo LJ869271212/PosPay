@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">PosPay</string>
+    <string name="company">公司</string>
+    <string name="selectCompanyName">请选择企业名称</string>
+    <string name="digits_user">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="input_user">请输入您的工号</string>
+    <string name="input_password">请输入密码</string>
+    <string name="remember_password">记住密码</string>
+    <string name="version">版本号：</string>
+    <string name="manage">管理</string>
+    <string name="collect">收款</string>
+    <string name="check">账单</string>
+    <string name="pleaseScanWaybill">请扫描运单</string>
+    <string name="daoFu">到付：</string>
+    <string name="yuan">元</string>
+    <string name="daiShouKuan">代收款：</string>
+    <string name="total">合计：</string>
+    <string name="nextStep">下一步</string>
+</resources>

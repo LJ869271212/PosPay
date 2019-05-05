@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/tools">
+
+  <style name="checkBox" parent="@android:style/Widget.Material.CompoundButton.CheckBox">
+    <item name="android:colorControlActivated">@color/colorAccent</item>
+    <item name="android:colorControlNormal">@color/color999999</item>
+  </style>
+
+</resources>

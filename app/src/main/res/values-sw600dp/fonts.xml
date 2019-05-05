@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!--font size-->
+  <dimen name="sp5">9sp</dimen>
+  <dimen name="sp10">14sp</dimen>
+  <dimen name="sp11">15sp</dimen>
+  <dimen name="sp12">16sp</dimen>
+  <dimen name="sp13">17sp</dimen>
+  <dimen name="sp14">18sp</dimen>
+  <dimen name="sp15">19sp</dimen>
+  <dimen name="sp16">20sp</dimen>
+  <dimen name="sp17">21sp</dimen>
+  <dimen name="sp18">22sp</dimen>
+  <dimen name="sp19">25sp</dimen>
+  <dimen name="sp20">22sp</dimen>
+  <dimen name="sp22">24sp</dimen>
+  <dimen name="sp24">28sp</dimen>
+  <dimen name="sp30">32sp</dimen>
+  <dimen name="sp38">42sp</dimen>
+</resources>

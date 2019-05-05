@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/coloref7f7f7"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/child_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/image_logo"
+            android:layout_width="@dimen/xdp66"
+            android:layout_height="@dimen/xdp66"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/ydp30"
+            android:layout_marginTop="@dimen/ydp66"
+            android:src="@mipmap/ic_login_pop" />
+
+        <LinearLayout
+            android:id="@+id/input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/xdp26"
+            android:paddingRight="@dimen/xdp26">
+            <!--公司名称选择的布局-->
+            <RelativeLayout
+                android:id="@+id/layout_company"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ydp40"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/xdp10"
+                android:paddingRight="@dimen/xdp10">
+
+                <TextView
+                    android:id="@+id/company_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:enabled="false"
+                    android:gravity="center_vertical"
+                    android:hint="@string/selectCompanyName"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/xdp10"
+                    android:paddingRight="@dimen/xdp10"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/color999999"
+                    android:textSize="@dimen/sp18" />
+
+                <ImageView
+                    android:id="@+id/ic_login_down"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/xdp8"
+                    android:src="@mipmap/ic_arrow_down_black" />
+
+                <View
+                    style="@style/HorizontalLineStyle"
+                    android:layout_alignParentBottom="true" />
+            </RelativeLayout>
+            <!--用户名输入的布局-->
+            <RelativeLayout
+                android:id="@+id/layout_user"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ydp40"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/xdp10"
+                android:paddingRight="@dimen/xdp10">
+
+                <EditText
+                    android:id="@+id/user_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:digits="@string/digits_user"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_user"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/xdp10"
+                    android:paddingRight="@dimen/xdp10"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/color999999"
+                    android:textSize="@dimen/sp18" />
+
+                <View
+                    style="@style/HorizontalLineStyle"
+                    android:layout_alignParentBottom="true" />
+            </RelativeLayout>
+            <!--分割线-->
+
+            <!--密码输入的布局-->
+            <RelativeLayout
+                android:id="@+id/layout_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ydp40"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/xdp10"
+                android:paddingRight="@dimen/xdp10">
+
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/input_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/xdp10"
+                    android:paddingRight="@dimen/xdp10"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/color999999"
+                    android:textSize="@dimen/sp18" />
+
+                <CheckBox
+                    android:id="@+id/show_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/xdp5"
+                    android:button="@drawable/show_password"
+                    android:paddingRight="@dimen/xdp5"
+                    android:textSize="@dimen/sp14" />
+
+                <View
+                    style="@style/HorizontalLineStyle"
+                    android:layout_alignParentBottom="true" />
+
+            </RelativeLayout>
+
+            <!--是否记住密码的单选框-->
+            <CheckBox
+                android:id="@+id/remember_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/ydp20"
+                android:layout_marginTop="@dimen/ydp15"
+                android:checked="true"
+                android:paddingLeft="@dimen/xdp10"
+                android:text="@string/remember_password"
+                android:textColor="@color/color999999"
+                android:textSize="@dimen/sp14"
+                android:theme="@style/checkBox"
+                android:visibility="gone" />
+
+            <!--登陆按钮-->
+            <Button
+                android:id="@+id/button_login"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/ydp30"
+                android:layout_marginTop="@dimen/ydp20"
+                android:background="@drawable/button_selector_gradient"
+                android:gravity="center"
+                android:text="登录"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp18" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--版本号布局-->
+            <TextView
+                android:id="@+id/version_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/ydp10"
+                android:layout_marginLeft="@dimen/xdp30"
+                android:text="@string/version"
+                android:textColor="@color/color8f8f8f"
+                android:textSize="@dimen/sp14" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>
