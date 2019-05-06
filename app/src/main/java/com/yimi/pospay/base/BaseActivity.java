@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.yimi.pospay.utils.ActivityStack;
 
@@ -105,5 +106,4 @@ public abstract class BaseActivity<V extends BaseContract.BaseView, H extends Ba
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
     }
-
 }

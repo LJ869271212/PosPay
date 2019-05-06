@@ -16,4 +16,12 @@
     <string name="daiShouKuan">代收款：</string>
     <string name="total">合计：</string>
     <string name="nextStep">下一步</string>
+    <string name="number">0123456789</string>
+    <string name="reprint">补印</string>
+    <string name="signIn">签到</string>
+    <string name="bussinessQuery">交易查询</string>
+    <string name="quit">退出</string>
+    <string name="waybillFour">运单号后4位</string>
+    <string name="scan_pay">扫码支付</string>
+    <string name="pay_card">刷卡支付</string>
 </resources>

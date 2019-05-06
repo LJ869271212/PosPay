@@ -7,19 +7,19 @@
     <FrameLayout
         android:id="@+id/fl_title"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/xdp50"
+        android:layout_height="@dimen/ydp40"
         android:background="@color/yellow">
 
-        <TextView
-            android:id="@+id/tv_manage"
+        <Button
+            android:id="@+id/btn_manage"
             android:layout_width="@dimen/xdp50"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:textSize="@dimen/sp22"
+            android:text="@string/manage"
             android:textColor="@color/black"
-            android:background="@drawable/button_selector_yellow"
-            android:text="@string/manage" />
+            android:textSize="@dimen/sp22" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,15 +30,16 @@
             android:textSize="@dimen/sp24"
             android:textStyle="bold" />
 
-        <TextView
+        <Button
+            android:id="@+id/btn_check"
             android:layout_width="@dimen/xdp50"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical|end"
-            android:textSize="@dimen/sp22"
-            android:textColor="@color/black"
+            android:background="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:background="@drawable/button_selector_yellow"
-            android:text="@string/check" />
+            android:text="@string/check"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp22" />
 
     </FrameLayout>
 
@@ -57,22 +58,45 @@
             android:layout_height="wrap_content"
             android:text="运单"
             android:textColor="@color/black"
-            android:textSize="@dimen/sp20" />
+            android:textSize="@dimen/sp20"
+            android:textStyle="bold" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/ydp30"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
             android:layout_marginLeft="@dimen/xdp10"
             android:layout_marginRight="@dimen/xdp10"
-            android:layout_weight="1"
-            android:background="@drawable/wire_shap"
-            android:gravity="center_vertical"
-            android:hint="@string/pleaseScanWaybill"
-            android:paddingLeft="@dimen/xdp5" />
+            android:background="@drawable/gray_shap"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_waybillNo"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/ydp25"
+                android:layout_weight="1"
+                android:digits="@string/number"
+                android:gravity="center_vertical"
+                android:hint="@string/pleaseScanWaybill"
+                android:background="@null"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:paddingLeft="@dimen/xdp5" />
+
+            <ImageView
+                android:id="@+id/iv_clear"
+                android:layout_width="@dimen/xdp20"
+                android:layout_height="@dimen/xdp20"
+                android:src="@mipmap/clear"/>
+
+        </LinearLayout>
 
         <ImageView
-            android:layout_width="@dimen/ydp30"
-            android:layout_height="@dimen/ydp30"
+            android:id="@+id/iv_scan"
+            android:layout_width="@dimen/ydp25"
+            android:layout_height="@dimen/ydp25"
+            android:background="?android:attr/selectableItemBackground"
             android:src="@mipmap/scan" />
 
     </LinearLayout>
@@ -83,7 +107,7 @@
         android:layout_below="@+id/ll_scan_waybill"
         android:layout_marginLeft="@dimen/xdp5"
         android:layout_marginRight="@dimen/xdp5"
-        android:layout_marginTop="@dimen/ydp10" />
+        android:layout_marginTop="@dimen/ydp20" />
 
     <LinearLayout
         android:id="@+id/ll_pay_type"
@@ -104,6 +128,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/daoFu"
+                android:textColor="@color/black"
                 android:textSize="@dimen/sp18" />
 
             <TextView
@@ -112,12 +137,15 @@
                 android:layout_marginLeft="@dimen/xdp10"
                 android:layout_marginRight="@dimen/xdp10"
                 android:text="18"
-                android:textSize="@dimen/sp18" />
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp18"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/yuan"
+                android:textColor="@color/black"
                 android:textSize="@dimen/sp18" />
 
         </LinearLayout>
@@ -183,23 +211,34 @@
             android:layout_marginLeft="@dimen/xdp10"
             android:layout_marginRight="@dimen/xdp10"
             android:text="36"
-            android:textSize="@dimen/sp24" />
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp24"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/yuan"
+            android:textColor="@color/black"
             android:textSize="@dimen/sp24" />
 
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="@dimen/xdp250"
+        android:layout_height="@dimen/ydp100"
+        android:layout_centerInParent="true"
+        android:alpha="0.1"
+        android:src="@mipmap/main_logo"/>
+
     <Button
+        android:id="@+id/btn_next_step"
         android:layout_width="@dimen/xdp200"
         android:layout_height="@dimen/ydp35"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/ydp5"
-        android:background="@drawable/button_selector_yellow"
+        android:layout_marginBottom="@dimen/ydp15"
+        android:background="@drawable/ripple_bg"
         android:text="@string/nextStep"
         android:textColor="@color/white"
         android:textSize="@dimen/sp24"

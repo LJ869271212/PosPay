@@ -16,4 +16,14 @@
         <item name="android:layout_height">@dimen/ydp1</item>
     </style>
 
+    <style name="BottomDialog" parent="android:Theme.DeviceDefault.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="BottomDialog.Animation" parent="android:Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/tranlate_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/tranlate_dialog_out</item>
+    </style>
+
 </resources>

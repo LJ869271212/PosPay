@@ -6,4 +6,9 @@
     <item name="android:colorControlNormal">@color/color999999</item>
   </style>
 
+    <style name="BottomDialog" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
 </resources>

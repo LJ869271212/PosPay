@@ -1,6 +1,7 @@
 package com.yimi.pospay.ui;
 
 import android.app.Application;
+import android.content.Context;
 
 /**
  * @author: lj
@@ -8,15 +9,21 @@ import android.app.Application;
  */
 public class PosApplication extends Application {
     private static volatile PosApplication instance = null;
+    private static Context mContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         instance = this;
+        mContext = getApplicationContext();
     }
 
     public static PosApplication getInstance() {
         return instance;
+    }
+
+    public static Context getAppContext() {
+        return mContext;
     }
 }

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><!--在不设置海拔的情况下使用的阴影背景-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--图层1 显示在下方-->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:endColor="#00000000"
+                android:startColor="#77434242"
+                android:type="linear" />
+            <size android:height="3dp" />
+            <corners
+                android:topLeftRadius="4dp"
+                android:topRightRadius="4dp"
+                android:bottomRightRadius="4dp"
+                android:bottomLeftRadius="4dp"/>
+        </shape>
+    </item>
+    <!--图层2 显示在上方-->
+    <!--bottom: 从bottom向上缩进12dp, 留给下面的层显示-->
+    <item android:bottom="@dimen/xdp6">
+        <shape android:shape="rectangle">
+            <!-- 填充色 -->
+            <solid android:color="#fff" />
+            <!-- 描边 设置线宽及颜色 -->
+            <stroke
+                android:color="@color/gray"
+                android:width="@dimen/xdp1"/>
+            <corners
+                android:topLeftRadius="4dp"
+                android:topRightRadius="4dp"
+                android:bottomRightRadius="4dp"
+                android:bottomLeftRadius="4dp"/>
+        </shape>
+    </item>
+</layer-list>
+
+    <!--作为背景的缺点: 1. View高度变大后 阴影区域不会随之按比例放大, 还是12dp
+                       2. View高度变大后 渐变范围也增大, 最下方的12dp因此变淡
+                       3. 图层重叠，重复绘制-->
