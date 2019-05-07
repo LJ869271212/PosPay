@@ -10,7 +10,7 @@
     <string name="manage">管理</string>
     <string name="collect">收款</string>
     <string name="check">账单</string>
-    <string name="pleaseScanWaybill">请扫描运单</string>
+    <string name="pleaseScanWaybill">请输入或扫描运单号</string>
     <string name="daoFu">到付：</string>
     <string name="yuan">元</string>
     <string name="daiShouKuan">代收款：</string>
@@ -24,4 +24,7 @@
     <string name="waybillFour">运单号后4位</string>
     <string name="scan_pay">扫码支付</string>
     <string name="pay_card">刷卡支付</string>
+    <string name="transaction">交易中</string>
+    <string name="payReason">付款理由</string>
+    <string name="bussinessWaybillno">交易运单号</string>
 </resources>

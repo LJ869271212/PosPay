@@ -1,8 +1,13 @@
 package com.yimi.pospay.ui.main.activity;
 
 import android.app.Dialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -17,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.landi.unioncodepay.UnionCodePay;
 import com.yimi.pospay.R;
 import com.yimi.pospay.base.BaseActivity;
 import com.yimi.pospay.ui.check.activity.CheckListActivity;
@@ -26,6 +32,7 @@ import com.yimi.pospay.ui.manage.activity.ManageActivity;
 import com.yimi.pospay.utils.ToastUtil;
 import com.yimi.pospay.utils.touchListener.TouchScaleListener;
 
+import aldltest.yimi.com.aidltest.CalculateInterface;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -59,17 +66,9 @@ public class MainActivity extends BaseActivity<MainContract.View, MainContract.B
     @BindView(R.id.iv_clear)
     ImageView ivClear;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        ivClear.setVisibility(View.GONE);
-        btnManage.setOnTouchListener(new TouchScaleListener(0.90f));
-        btnCheck.setOnTouchListener(new TouchScaleListener(0.90f));
-        ivScan.setOnTouchListener(new TouchScaleListener(0.90f));
-        etWaybillNo.setOnEditorActionListener(new EditorActionListener());
-        etWaybillNo.addTextChangedListener(new AddTextChangeListener());
-    }
+    private UnionCodePay unionCodePay;
+    private CalculateInterface calculateInterface;
+    private ServiceConnection connection;
 
     @Override
     public String getPageName() {
@@ -86,7 +85,21 @@ public class MainActivity extends BaseActivity<MainContract.View, MainContract.B
         return new MainPresenter();
     }
 
-    @OnClick({R.id.btn_manage, R.id.btn_check, R.id.iv_scan, R.id.iv_clear,R.id.btn_next_step})
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        ivClear.setVisibility(View.GONE);
+        btnManage.setOnTouchListener(new TouchScaleListener(0.90f));
+        btnCheck.setOnTouchListener(new TouchScaleListener(0.90f));
+        ivScan.setOnTouchListener(new TouchScaleListener(0.90f));
+        etWaybillNo.setOnEditorActionListener(new EditorActionListener());
+        etWaybillNo.addTextChangedListener(new AddTextChangeListener());
+
+        bindRemoteService();
+    }
+
+    @OnClick({R.id.btn_manage, R.id.btn_check, R.id.iv_scan, R.id.iv_clear, R.id.btn_next_step})
     public void onclick(View view) {
         Intent intent;
         switch (view.getId()) {
@@ -110,6 +123,59 @@ public class MainActivity extends BaseActivity<MainContract.View, MainContract.B
             default:
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unbindService(connection);
+    }
+
+    /**
+     * 绑定银联支付服务
+     */
+    private void bindRemoteService() {
+        Intent intentService = new Intent();
+        intentService.setAction("com.landi.unioncodepay");
+        //兼容Android 5.0
+        intentService.setPackage("com.landi.unioncodepay");
+        connection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                // 从连接中获取Stub对象
+                unionCodePay = UnionCodePay.Stub.asInterface(iBinder);
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+                // 断开连接
+                unionCodePay = null;
+            }
+        };
+        startService(intentService);
+        bindService(intentService, connection, Context.BIND_AUTO_CREATE);
+    }
+
+    private void bindRemoteCalService() {
+        Intent intentService = new Intent();
+        intentService.setAction("aldltest.yimi.com.aidltest.CalculateService");
+        //兼容Android 5.0
+        intentService.setPackage("aldltest.yimi.com.aidltest");
+        connection = new ServiceConnection() {
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+                // 从连接中获取Stub对象
+                calculateInterface = CalculateInterface.Stub.asInterface(iBinder);
+            }
+
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+                // 断开连接
+                calculateInterface = null;
+            }
+        };
+        startService(intentService);
+        bindService(intentService, connection, Context.BIND_AUTO_CREATE);
     }
 
     /**
@@ -143,7 +209,7 @@ public class MainActivity extends BaseActivity<MainContract.View, MainContract.B
         public void afterTextChanged(Editable s) {
             if (s.toString().length() > 0) {
                 ivClear.setVisibility(View.VISIBLE);
-            }else{
+            } else {
                 ivClear.setVisibility(View.GONE);
             }
         }
@@ -162,7 +228,19 @@ public class MainActivity extends BaseActivity<MainContract.View, MainContract.B
         llScanPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtil.showToast("点击了扫码支付");
+                Intent intent = new Intent(MainActivity.this, TransactionActivity.class);
+                startActivity(intent);
+//                try {
+//                    double result = calculateInterface.doCalculate(3, 2);
+//                    ToastUtil.showToast("result=" + result);
+//                } catch (RemoteException e) {
+//                    e.printStackTrace();
+//                }
+//                try {
+//                    unionCodePay.enterMainPage();
+//                } catch (RemoteException e) {
+//                    e.printStackTrace();
+//                }
             }
         });
         llPayCard.setOnClickListener(new View.OnClickListener() {
